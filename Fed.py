@@ -179,7 +179,10 @@ def federated_learning(config, logger, device):
     model_type = config.model_type
 
     logger.log("Loading dataset...")
-    train_dataset, test_dataset = load_dataset(False)
+
+    # change False to True if download needed
+    train_dataset, test_dataset = load_dataset(True)
+
     train_loaders, test_loader = partition_dataset(config, train_dataset, test_dataset, logger)
 
     logger.log("Creating models, optimizers, GCVs...")
